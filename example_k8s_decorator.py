@@ -6,7 +6,8 @@ from datetime import datetime, timedelta
     image="python:3.8-slim-buster",
     name="k8s_test",
     namespace="default",
-    in_cluster=True
+    in_cluster=True,
+    provide_context=False
 )
 def execute_in_k8s_pod():
     import time
@@ -14,7 +15,11 @@ def execute_in_k8s_pod():
     print("Hello from k8s pod")
     time.sleep(2)
 
-@task.kubernetes(image="python:3.8-slim-buster", namespace="default", in_cluster=True)
+@task.kubernetes(
+    image="python:3.8-slim-buster",
+    namespace="default",
+    in_cluster=True,
+    provide_context=False)
 def print_pattern():
     n = 5
     for i in range(0, n):
