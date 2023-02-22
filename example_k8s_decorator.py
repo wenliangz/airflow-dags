@@ -6,8 +6,7 @@ from datetime import datetime, timedelta
     image="python:3.8-slim-buster",
     name="k8s_test",
     namespace="default",
-    in_cluster=False,
-    config_file="/home/airflow/.kube/config",
+    in_cluster=True
 )
 def execute_in_k8s_pod():
     import time
@@ -15,7 +14,7 @@ def execute_in_k8s_pod():
     print("Hello from k8s pod")
     time.sleep(2)
 
-@task.kubernetes(image="python:3.8-slim-buster", namespace="default", in_cluster=False, config_file="/home/airflow/.kube/config")
+@task.kubernetes(image="python:3.8-slim-buster", namespace="default", in_cluster=True)
 def print_pattern():
     n = 5
     for i in range(0, n):
