@@ -27,18 +27,6 @@ def print_pattern():
         # ending line after each row
         print("\r")
 
-
-default_args = {
-    'owner': 'wenliang',
-    'retries': 5,
-    'retry_delay': timedelta(minutes=5)
-}
-
-@dag(dag_id='example_k8s_decorator',
-     default_args=default_args,
-     start_date=datetime(2023, 2, 20),
-     schedule_interval='@daily')
-
 execute_in_k8s_pod_instance = execute_in_k8s_pod()
 print_pattern_instance = print_pattern()
 execute_in_k8s_pod_instance >> print_pattern_instance
