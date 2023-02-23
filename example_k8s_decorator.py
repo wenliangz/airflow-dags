@@ -14,6 +14,7 @@ def execute_in_k8s_pod():
 
     print("Hello from k8s pod")
     time.sleep(2)
+    return 'Hello from k8s pod'
 
 @task.kubernetes(
     image="python:3.8-slim-buster",
@@ -32,6 +33,7 @@ def print_pattern():
 
         # ending line after each row
         print("\r")
+    return n
 
 
 default_args = {
